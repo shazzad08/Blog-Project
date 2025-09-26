@@ -1,3 +1,5 @@
+# Redirect to profile page after login
+LOGIN_REDIRECT_URL = '/author/profile/'
 """
 Django settings for blog_project project.
 
@@ -39,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'author',
     'categories',
-    'profiles',
+   
     'post',
     'crispy_forms',
     'crispy_bootstrap5',
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
 
 CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+LOGIN_URL = '/author/user_login/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,6 +127,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS =[
+     BASE_DIR / 'static',
+]
+
+
+
+# Base url to serve media files
+MEDIA_URL = '/media/'
+
+# Path where media is stored'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

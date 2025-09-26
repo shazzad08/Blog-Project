@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content%}
+
+<div class="d-flex flex-column min-vh-100">
+  <div>
+    <a class="btn btn-warning" href="{% url 'edit_profile' %}">Edit Profile</a>
+  </div>
+
+  <!-- Flexbox wrapper with wrapping and gap -->
+  <div class="d-flex flex-wrap gap-3 px-5 pt-5 flex-grow-1">
+    {% for post in data %}
+    <div class="card h-100 shadow-sm rounded-4 overflow-hidden" style="width: 18rem;">
+      <img src="{{ post.image.url }}" 
+           class="card-img-top rounded-top-4" 
+           style="height: 180px; object-fit: cover; border-bottom: 2px solid #eee;" 
+           alt="Post Image" />
+      <div class="card-body">
+        <h5 class="card-title text-primary text-truncate">{{ post.title }}</h5>
+        <p class="card-text text-truncate" style="max-width: 100%; display: block;">
+          {{ post.content }}
+        </p>
+        <p>Author: <strong>{{ post.author.first_name }} {{ post.author.last_name }}</strong></p>
+        <p>
+          Category:
+          {% for cat in post.category.all %}
+            <button class="btn btn-secondary btn-sm rounded-pill" disabled>{{ cat.name }}</button>
+          {% endfor %}
+        </p>
+        <a href="{% url 'edit_post' post.id %}" class="btn btn-warning rounded-pill">Edit</a>
+        <a href="{% url 'delete_post' post.id %}" class="btn btn-danger rounded-pill">Delete</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
