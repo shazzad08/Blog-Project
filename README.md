@@ -47,9 +47,6 @@ This project is perfect for:
 ### UI/UX Features
 - Responsive Bootstrap-based design
 - Clean and intuitive user interface
-- Mobile-friendly layout
-- Search functionality
-- Pagination for post listings
 
 ### Technical Features
 - Django 4.x based backend
